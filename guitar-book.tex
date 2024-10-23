@@ -1,0 +1,232 @@
+% Guitar Chords Book
+
+\documentclass[titlepage]{article}
+\usepackage{gchords}
+\usepackage{blindtext}
+\usepackage{datetime2}
+\usepackage{array}
+\usepackage[margin=2cm]{geometry}
+
+% Redefine \chord as \gchord
+\let\gchord\chord
+
+% Redefine \chord to undefined
+\let\chord\undefined
+
+\usepackage{leadsheets}
+
+\ExplSyntaxOn
+    \UseName{prop_new:c}{l__leadsheets_songs_height_prop}
+\ExplSyntaxOff
+
+\definesongtitletemplate {subtabular}
+  {
+    \ifsongmeasuring
+      { \subsection* }
+      { \subsection }
+      { \ifsongproperty{band}{\songproperty{band} -}{} \songproperty {title} }
+    \begingroup\footnotesize
+    \begin{tabular}{
+        @{}
+        >{\raggedright\arraybackslash}p{.5\linewidth}
+        @{}
+        >{\raggedleft\arraybackslash}p{.5\linewidth}
+        @{}
+      }
+      \ifsongproperty{interpret}
+        {\GetTranslation{leadsheets/interpret}}
+        {}
+      \ifsongproperty{composer}
+        {
+          & \GetTranslation{leadsheets/composer}:~
+          \printsongpropertylist{composer}{~\&~}{,~}{~\&~}
+          \ifsongproperty{lyrics}
+            {\\ & \GetTranslation{leadsheets/lyrics}:~
+              \printsongpropertylist{lyrics}{~\&~}{,~}{~\&~}
+            }
+            {}
+        }
+        {}
+      \ifsongproperty{interpret}{\\}{\ifsongproperty{composer}{\\}{}}
+      \ifsongproperty{genre}
+        {& Genre:~ \songproperty{genre} \\}
+        {}
+      \ifsongproperty{tempo}
+        {& Tempo:~ \songproperty{tempo} \\}
+        {}
+      \ifsongproperty{key}
+        {
+          &
+          \setchords{
+            major = -\GetTranslation{leadsheets/major} ,
+            minor = -\GetTranslation{leadsheets/minor}
+          }
+          \GetTranslation{leadsheets/key}:~
+          \expandcode{\writechord{\songproperty{key}}} \\
+        }
+        {}
+    \end{tabular}
+    \par\endgroup
+  }
+
+
+\setleadsheets{
+  title-template = subtabular,
+  song-format = \ttfamily ,
+  chords/sharp = \# ,
+  chords/flat = b,
+}
+
+\DTMsetdatestyle{ddmmyyyy}
+
+\title{Guitar Book}
+\author{Salvatore Gargano}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Chords}
+
+\subsection{A Chords}
+
+\mediumchords{
+	\gchord{0 t}{x,o,f2p2,f1p2,f3p2,o}{A}
+	\gchord{0 t}{x,o,p2,p2,1,o}{Am}
+	\gchord{0 t}{x,o,p2,p2,p3,o}{Asus4}
+	\gchord{0 t}{x,o,p2,p2,p3,p3}{A7sus4}
+}
+
+\pagebreak
+
+\subsection{B Chords}
+
+No chords yet.
+
+\pagebreak
+
+\subsection{C Chords}
+
+\mediumchords{
+	\gchord{0 t}{x,p3,p2,o,p1,o}{C}
+	\gchord{0 t}{x,p3,p2,o,p3,p3}{Cadd9}
+}
+\pagebreak
+
+\subsection{D Chords}
+
+\mediumchords {
+	\gchord{0 t}{x,x,o,p2,p3,p2}{D}
+	\gchord{0 t}{x,x,o,p2,p3,p1}{Dm}
+	\gchord{0 t}{x,x,o,p2,p3,p3}{Dsus4}
+}
+
+\pagebreak
+
+\subsection{E Chords}
+
+\mediumchords {
+	\gchord{0 t}{o,p2,p2,p1,o,o}{E}
+	\gchord{0 t}{o,p2,p2,o,o,o}{Em}
+	\gchord{0 t}{o,p2,p2,o,p3,p3}{Em7}
+}
+
+\pagebreak
+
+\subsection{F Chords}
+
+\mediumchords {
+	\gchord{0 t}{p1,p3,p3,p2,p1,p1}{F}
+	\gchord{0 t}{x,x,p3,p2,p1,p1}{Mini F}
+	\gchord{0 t}{x,p3,p3,p2,p1,o}{Fmaj7/C}
+	\gchord{0 t}{x,x,p3,p2,p1,o}{Fmaj7}
+}
+
+\pagebreak
+
+\subsection{G Chords}
+
+\mediumchords {
+	\gchord{0 t}{p3,p2,o,o,o,p3}{G}
+	\gchord{0 t}{p3,x,o,o,o,p3}{"Little" G}
+	\gchord{0 t}{p3,p2,o,o,p3,p3}{'Big' G}
+}
+\pagebreak
+
+\pagebreak
+
+\section{Songs}
+
+\begin{song}[verse/numbered]{title=505, band=Arctic Monkeys}
+	\begin{intro}
+		_{Dm} _{Em} _{Dm} _{Em}
+	\end{intro}
+
+	\begin{chorus}
+		I'm going ^{Dm}back to 505\\
+		If it's a ^{Em}7 hour flight \\
+		Or a forty-^{Dm}five minute drive \\
+		In ^{Em}my imagination you're waiting \\
+		^{Dm}Lying on your side \\
+		With your ^{Em}hands between your thighs
+	\end{chorus}
+
+	\begin{verse}
+		^{Dm}Stop and wait a sec. Oh, when you ^{Em}look at me like that my darling \\
+		^{Dm}What did you expect? I'd ^{Em}probably still adore you \\
+		With your ^{Dm}hands around my neck, or I ^{Em}did last time I checked
+	\end{verse}
+
+	\begin{interlude}
+		_{Dm} _{Em}
+	\end{interlude}
+
+	\begin{verse}
+		I'm not ^{Dm}shy of a spark \\
+		The ^{Em}knife twists at the thought that I should ^{Dm}fall short of the mark \\
+		^{Em}Frightened by the bite though it's no ^{Dm}harsher than the bark \\
+		The ^{Em}middle of adventure, such a ^{Dm}perfect place to start
+	\end{verse}
+
+	\begin{chorus*}
+		*CHORUS*
+	\end{chorus*}
+
+	\begin{interlude}
+		_{Dm} _{Em}
+		_{Dm} _{Em} {[x2]}
+	\end{interlude}
+
+	\begin{info}
+		*Faster strumming*
+	\end{info}
+
+	\begin{verse}
+		But I crumble ^{Dm}completely when you cry \\
+		It ^{Em}seems like once again you've had to ^{Dm}greet me with goodbye \\
+		I'm ^{Em}always just about to go and ^{Dm}spoil the surprise \\
+		Take my ^{Em}hands off of your eyes too soon
+	\end{verse}
+
+	\begin{chorus*}
+		*CHORUS*
+	\end{chorus*}
+
+	\begin{interlude}
+		_{Dm} _{Em} _{Dm} _{Em} x2
+	\end{interlude}
+
+	% Outro
+	\begin{outro}
+		_{Dm} _{Em} _{Dm} _{Em}
+	\end{outro}
+
+\end{song}
+
+\end{document}

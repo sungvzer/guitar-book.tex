@@ -20,61 +20,60 @@
 \ExplSyntaxOff
 
 \definesongtitletemplate {subtabular}
-  {
-    \ifsongmeasuring
-      { \subsection* }
-      { \subsection }
-      { \ifsongproperty{band}{\songproperty{band} -}{} \songproperty {title} }
-    \begingroup\footnotesize
-    \begin{tabular}{
-        @{}
-        >{\raggedright\arraybackslash}p{.5\linewidth}
-        @{}
-        >{\raggedleft\arraybackslash}p{.5\linewidth}
-        @{}
-      }
-      \ifsongproperty{interpret}
-        {\GetTranslation{leadsheets/interpret}}
-        {}
-      \ifsongproperty{composer}
-        {
-          & \GetTranslation{leadsheets/composer}:~
-          \printsongpropertylist{composer}{~\&~}{,~}{~\&~}
-          \ifsongproperty{lyrics}
-            {\\ & \GetTranslation{leadsheets/lyrics}:~
-              \printsongpropertylist{lyrics}{~\&~}{,~}{~\&~}
-            }
-            {}
-        }
-        {}
-      \ifsongproperty{interpret}{\\}{\ifsongproperty{composer}{\\}{}}
-      \ifsongproperty{genre}
-        {& Genre:~ \songproperty{genre} \\}
-        {}
-      \ifsongproperty{tempo}
-        {& Tempo:~ \songproperty{tempo} \\}
-        {}
-      \ifsongproperty{key}
-        {
-          &
-          \setchords{
-            major = -\GetTranslation{leadsheets/major} ,
-            minor = -\GetTranslation{leadsheets/minor}
-          }
-          \GetTranslation{leadsheets/key}:~
-          \expandcode{\writechord{\songproperty{key}}} \\
-        }
-        {}
-    \end{tabular}
-    \par\endgroup
-  }
-
+{
+	\ifsongmeasuring
+	{ \subsection* }
+	{ \subsection }
+	{ \ifsongproperty{band}{\songproperty{band} -}{} \songproperty {title} }
+	\begingroup\footnotesize
+	\begin{tabular}{
+		@{}
+		>{\raggedright\arraybackslash}p{.5\linewidth}
+		@{}
+		>{\raggedleft\arraybackslash}p{.5\linewidth}
+		@{}
+		}
+		\ifsongproperty{interpret}
+		{\GetTranslation{leadsheets/interpret}}
+		{}
+		\ifsongproperty{composer}
+		{
+		  & \GetTranslation{leadsheets/composer}:~
+			\printsongpropertylist{composer}{~\&~}{,~}{~\&~}
+			\ifsongproperty{lyrics}
+		{                                                          \\       & \GetTranslation{leadsheets/lyrics}:~
+				       \printsongpropertylist{lyrics}{~\&~}{,~}{~\&~}
+			}
+			       {}
+		}
+		       {}
+		\ifsongproperty{interpret}{\\}{\ifsongproperty{composer}{\\}{}}
+		\ifsongproperty{genre}
+		{ & Genre:~ \songproperty{genre} \\}
+		       {}
+		\ifsongproperty{tempo}
+		{ & Tempo:~ \songproperty{tempo} \\}
+		       {}
+		\ifsongproperty{key}
+		       {
+		  &
+			       \setchords{
+				       major = -\GetTranslation{leadsheets/major} ,
+				       minor = -\GetTranslation{leadsheets/minor}
+			}
+			\GetTranslation{leadsheets/key}:~
+		\expandcode{\writechord{\songproperty{key}}}               \\
+		}
+		{}
+	\end{tabular}
+	\par\endgroup
+}
 
 \setleadsheets{
-  title-template = subtabular,
-  song-format = \ttfamily ,
-  chords/sharp = \# ,
-  chords/flat = b,
+	title-template = subtabular,
+	song-format = \ttfamily ,
+	chords/sharp = \# ,
+	chords/flat = b,
 }
 
 \DTMsetdatestyle{ddmmyyyy}
@@ -156,6 +155,7 @@ No chords yet.
 	\gchord{0 t}{p3,p2,o,o,o,p3}{G}
 	\gchord{0 t}{p3,x,o,o,o,p3}{"Little" G}
 	\gchord{0 t}{p3,p2,o,o,p3,p3}{'Big' G}
+	\gchord{0 t}{3,x,o,2,3,3}{Gsus2}
 }
 \pagebreak
 
@@ -226,6 +226,67 @@ No chords yet.
 	\begin{outro}
 		_{Dm} _{Em} _{Dm} _{Em}
 	\end{outro}
+
+\end{song}
+
+\begin{song}[verse/numbered,remember-chords]{title=Free Fallin', band=Tom Petty}
+	\begin{center}
+		\begin{tabular}{cccccccccccccccc}
+			$\downarrow$ & $\quad$ & $\quad$ & $\downarrow$ & $\quad$ & $\quad$ & $\quad$ & $\quad$ & $\downarrow$ & $\downarrow$ & $\quad$ & $\downarrow$ & $\quad$ & $\quad$ & $\quad$ & $\quad$ \\
+			1            & \&      & 2       & \&           & 3       & \&      & 4       & \&      & 5            & \&           & 6       & \&           & 7       & \&      & 8       & \&      \\
+		\end{tabular}
+	\end{center}
+
+	% Add strumming pattern
+
+	\begin{intro}
+		_{D} _{Gsus2} / _{Gsus2} _{D} _{Asus4} \\
+		_{D} _{Gsus2} / _{Gsus2} _{D} _{Asus4}
+	\end{intro}
+
+	\begin{verse}
+		She's a ^{D}good ^{Gsus2}girl, ^{Gsus2}loves ^{D}her ^{Asus4}mama \\
+		Loves ^{D}Je- ^{Gsus2}sus, and ^{Gsus2}Americ- ^{D}a ^{Asus4}too \\
+		She's a ^{D}good ^{Gsus2}girl, ^{Gsus2}crazy ^{D}about ^{Asus4}Elvis \\
+		Loves ^{D}hors- ^{Gsus2}es and her ^{Gsus2}boy- ^{D}friend ^{Asus4}too
+	\end{verse}
+
+	\begin{interlude}
+		_{D} _{Gsus2} / _{Gsus2} _{D} _{Asus4}
+	\end{interlude}
+
+	\begin{verse}
+		And it's a ^long ^day, ^living ^in Re- ^seda \\
+		There's a ^free- ^way, ^runnin' ^through the ^yard \\
+		And I'm a ^bad ^boy, 'cause I ^don't ^even ^miss her \\
+		I'm a ^bad ^boy, ^for breakin' ^her ^heart
+	\end{verse}
+
+	\begin{chorus}
+		Now I'm ^{D}free, ^{Gsus2} ^{Gsus2} ^{D} ^{Asus4} \\
+		Free ^{D}fall- ^{Gsus2}in', ^{Gsus2} ^{D} ^{Asus4} \\
+		Yeah I'm ^{D}free, ^{Gsus2} ^{Gsus2} ^{D} ^{Asus4} \\
+		Free ^{D}fall- ^{Gsus2}in', ^{Gsus2} ^{D} ^{Asus4}
+	\end{chorus}
+
+	\begin{interlude}
+		_{D5} _{G5} / _{D5} _{A5} \\
+		_{D5} _{G5} / _{D5} _{A5}
+	\end{interlude}
+
+	\begin{verse}
+		I wa-^nna ^glide, ^down ^over Mulho^lland \\
+		I wa-^nna ^write, ^her ^name in the ^sky \\
+		I'm gonna ^free ^fall, ^out ^into no-^thin' \\
+		Gonna ^leave ^this, ^world ^for a ^while
+	\end{verse}
+
+	\begin{chorus}
+		And I'm ^free, ^... ^... ^... ^... \\
+		Free ^fall- ^in', ^... ^... ^... \\
+		Yeah I'm ^free, ^... ^... ^... ^... \\
+		Free ^fall- ^in', ^... ^... ^...
+	\end{chorus}
 
 \end{song}
 
